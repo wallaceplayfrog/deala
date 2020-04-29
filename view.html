@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>firstchart</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+
+</head>
+<body>
+    <div id="myfirstchart" class="chart-container" style="width:1600px; height:800px;"></div>
+    <script>
+        var chart_myfirstchart = echarts.init(
+            document.getElementById('myfirstchart'), 'white', {renderer: 'canvas'});
+        var option_myfirstchart = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 300,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "sunburst",
+            "data": [
+                {
+                    "value": 257850,
+                    "name": "\u4ea4\u901a\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#F742F5"
+                    },
+                    "children": [
+                        {
+                            "value": 135250,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#B57AFD"
+                            }
+                        },
+                        {
+                            "value": 122600,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#96DADC"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 1330702.8,
+                    "name": "\u5de5\u5546\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#251FCD"
+                    },
+                    "children": [
+                        {
+                            "value": 729922.54,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#C6134C"
+                            }
+                        },
+                        {
+                            "value": 600780.26,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#645C86"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 508980,
+                    "name": "\u4e2d\u56fd\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#FBFC6F"
+                    },
+                    "children": [
+                        {
+                            "value": 275980,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#FD3B56"
+                            }
+                        },
+                        {
+                            "value": 233000,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#7DE167"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 665200,
+                    "name": "\u4e0a\u6d77\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#1B3AC4"
+                    },
+                    "children": [
+                        {
+                            "value": 164630,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#4B8B1D"
+                            }
+                        },
+                        {
+                            "value": 500570,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#67A98F"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 437000,
+                    "name": "\u519c\u4e1a\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#71A7C3"
+                    },
+                    "children": [
+                        {
+                            "value": 318249,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#E374E5"
+                            }
+                        },
+                        {
+                            "value": 118751,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#5E3EBE"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 520000,
+                    "name": "\u62db\u5546\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#83ABC2"
+                    },
+                    "children": [
+                        {
+                            "value": 209850,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#B48AD7"
+                            }
+                        },
+                        {
+                            "value": 310150,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#19F291"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 1000000,
+                    "name": "\u5efa\u8bbe\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#F3C5D7"
+                    },
+                    "children": [
+                        {
+                            "value": 308055.09,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#419A98"
+                            }
+                        },
+                        {
+                            "value": 691944.9099999999,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#F84D41"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 706000,
+                    "name": "\u6d66\u4e1c\u53d1\u5c55\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#E52E58"
+                    },
+                    "children": [
+                        {
+                            "value": 87650,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#7315B6"
+                            }
+                        },
+                        {
+                            "value": 618350,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#6D5E1C"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 317850,
+                    "name": "\u6c11\u751f\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#3CA932"
+                    },
+                    "children": [
+                        {
+                            "value": 7850,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#44F586"
+                            }
+                        },
+                        {
+                            "value": 310000,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#51E65A"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 204230,
+                    "name": "\u5317\u4eac\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#BEBB5E"
+                    },
+                    "children": [
+                        {
+                            "value": 14230,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#A7B7B3"
+                            }
+                        },
+                        {
+                            "value": 190000,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#83D2E3"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 222000,
+                    "name": "\u4e2d\u4fe1\u5b9e\u4e1a\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#A379F4"
+                    },
+                    "children": [
+                        {
+                            "value": 12000,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#93131B"
+                            }
+                        },
+                        {
+                            "value": 210000,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#EFFDDC"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 170250,
+                    "name": "\u519c\u5546\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#CFE325"
+                    },
+                    "children": [
+                        {
+                            "value": 160259.55,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#5EB712"
+                            }
+                        },
+                        {
+                            "value": 9990.450000000012,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#6588BC"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 50000,
+                    "name": "\u56fd\u5f00\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#E2ECED"
+                    },
+                    "children": [
+                        {
+                            "value": 45000,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#593ADD"
+                            }
+                        },
+                        {
+                            "value": 5000,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#EE4627"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 10000,
+                    "name": "\u5927\u8fde\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#4F6798"
+                    },
+                    "children": [
+                        {
+                            "value": 10000,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#C745A6"
+                            }
+                        },
+                        {
+                            "value": 0,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#1ABE8E"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 90000,
+                    "name": "\u5e7f\u53d1\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#F48EF7"
+                    },
+                    "children": [
+                        {
+                            "value": 20000,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#9B8E6E"
+                            }
+                        },
+                        {
+                            "value": 70000,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#176ACC"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 3250,
+                    "name": "\u5929\u6d25\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#CFBAFD"
+                    },
+                    "children": [
+                        {
+                            "value": 3250,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#514A76"
+                            }
+                        },
+                        {
+                            "value": 0,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#D675B4"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 160300,
+                    "name": "\u4ea4\u94f6\u56fd\u9645\u4fe1\u6258",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#454F15"
+                    },
+                    "children": [
+                        {
+                            "value": 160300,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#A45BBA"
+                            }
+                        },
+                        {
+                            "value": 0,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#D49524"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 207000,
+                    "name": "\u519c\u53d1\u5c55\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#6FD634"
+                    },
+                    "children": [
+                        {
+                            "value": 126900,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#87E6FC"
+                            }
+                        },
+                        {
+                            "value": 80100,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#586626"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 30000,
+                    "name": "\u6c47\u4e30\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#5AA9F9"
+                    },
+                    "children": [
+                        {
+                            "value": 10000,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#3ACD65"
+                            }
+                        },
+                        {
+                            "value": 20000,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#2D649B"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 90000,
+                    "name": "\u90ae\u50a8\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#E288D9"
+                    },
+                    "children": [
+                        {
+                            "value": 10000,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#4B5EFD"
+                            }
+                        },
+                        {
+                            "value": 80000,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#76FB4B"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 30000,
+                    "name": "\u5149\u5927\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#C6FF7F"
+                    },
+                    "children": [
+                        {
+                            "value": 26250,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#945796"
+                            }
+                        },
+                        {
+                            "value": 3750,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#5E5C15"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "value": 50000,
+                    "name": "\u8fdb\u51fa\u53e3\u94f6\u884c",
+                    "target": "blank",
+                    "itemStyle": {
+                        "color": "#491E23"
+                    },
+                    "children": [
+                        {
+                            "value": 20000,
+                            "name": "\u5df2\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#1A375F"
+                            }
+                        },
+                        {
+                            "value": 30000,
+                            "name": "\u672a\u7528",
+                            "target": "blank",
+                            "itemStyle": {
+                                "color": "#F9796E"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "center": [
+                "50%",
+                "50%"
+            ],
+            "radius": [
+                0,
+                "95%"
+            ],
+            "highlightPolicy": "ancestor",
+            "nodeClick": "rootToNode",
+            "sort": "null",
+            "levels": [
+                {},
+                {
+                    "r0": "15%",
+                    "r": "76%",
+                    "itemStyle": {
+                        "borderWidth": 2
+                    },
+                    "label": {
+                        "rotate": "radial"
+                    }
+                },
+                {
+                    "r0": "76%",
+                    "r": "80%",
+                    "label": {
+                        "align": "right",
+                        "position": "outside",
+                        "silent": false
+                    },
+                    "itemStyle": {
+                        "borderWidth": 3
+                    }
+                }
+            ],
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{b}"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [],
+            "selected": {},
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "title": [
+        {
+            "text": "\u4e0a\u6d77\u5f20\u6c5f(\u96c6\u56e2)\u6709\u9650\u516c\u53f82020\u5e74\u5ea6\u7b2c\u4e00\u671f\u4e2d\u671f\u7968\u636e\u52df\u96c6\u8bf4\u660e\u4e66(\u66f4\u65b0)",
+            "subtext": "[\u5355\u4f4d\uff1a\u4e07\u5143]",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_myfirstchart.setOption(option_myfirstchart);
+    </script>
+</body>
+</html>
