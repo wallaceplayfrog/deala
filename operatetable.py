@@ -8,16 +8,16 @@ class OperateTable(object):
         self.cur = self.conn.cursor()
     
     def  create_table(self):
-        sql_bank = '''CREATE TABLE credit_info (
+        sql_bank = '''CREATE TABLE myapp_credit_info (
             id integer primary key Autoincrement not null,
             bank text not null,
             credit decimal(15,2) not null,
-            uesd decimal(15,2) not null,
-            company integer not null,
-            FOREIGN KEY (company) REFERENCES company(id))
+            used decimal(15,2) not null,
+            company_id integer not null,
+            FOREIGN KEY (company_id) REFERENCES myapp_company_info(id))
             '''
 
-        sql_company = '''CREATE TABLE company_info (
+        sql_company = '''CREATE TABLE myapp_company_info (
             id integer primary key Autoincrement not null,
             company text not null,
             units text not null)
@@ -27,8 +27,8 @@ class OperateTable(object):
         self.cur.execute(sql_company)
     
     def drop_table(self):
-        self.cur.execute('drop table credit_info')
-        self.cur.execute('drop table company_info')
+        self.cur.execute('drop table myapp_credit_info')
+        self.cur.execute('drop table myapp_company_info')
 
 
 if __name__ == '__main__':

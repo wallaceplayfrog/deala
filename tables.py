@@ -6,6 +6,7 @@ import os
 import tabula
 import sqlite3
 import time
+import threading
 
 '''
 在爬取出的pdf文件中，通过目录分析可得到发行人银行授信情况都在
@@ -13,14 +14,12 @@ import time
 []子目录
 在目录获取到资信情况的页码后，提取相应页码的授信情况表格
 '''
-indexs = ["发行人资信情况", "发行人资信状况", "企业资信情况", "公司资信状况", "资信状况", "资信情况"]
 
 def get_index_page_number():
     for page in pdf.pages:
-        # print("\n处理页数：", page.page_number)
-        # print("\n", page.extract_text())
         if re.match(".*?目[ ]*录", page.extract_text(), flags=re.S):
             return page.page_number
+    return False
 
 
 def get_table_ch_number():
@@ -38,6 +37,7 @@ def get_table_ch_number():
 
 
 def isin_indexs(line):
+    indexs = ["发行人资信情况", "发行人资信状况", "企业资信情况", "公司资信状况", "资信状况", "资信情况"]
     for index in indexs:
         if index in line:
             return True
@@ -57,38 +57,41 @@ def get_table_page_number(table_ch_number):
     return False
 
 
-def get_table(filepath, table_page_number):
-    '''
-    for page in pdf.pages[table_page_number - 1:table_page_number + 2]:
-        tables = page.extract_tables()
-        if tables:
-            for table in tables:
-                for line in table:
-                    print(line)
-                print("\n\n")
-    '''
+def clean_table(filepath, table_page_number):
     pages = str(table_page_number) + "-" + str(table_page_number + 2)
     df = tabula.read_pdf(filepath, pages=pages, stream=True)
-    return df
+    flag = get_data(df)
+    if not flag:
+        df = tabula.read_pdf(filepath, pages=pages, lattice=True)
+        flag = get_data(df)
+    if flag:
+        log_file.write('表格数据提取成功')
+    else:
+        log_file.write('表格数据提取失败')
 
 
-def clean_table(df):
+def get_data(df):
+    flag = False
     patterns = [r"[\u4E00-\u9FA5]+",r"[1-9]\d*\.\d*|0\.\d*[1-9]\d*$"]
     data_list = []
     for df_table in df:
         table_list = []
         df_table.fillna("", inplace=True)
+        df_table.applymap((lambda x: "".join(x.split(r'\r')) if type(x) is str else x))
         table_list.append(list(df_table.head()))
         array_table = np.array(df_table)
         table_list += array_table.tolist()
         data_list += table_list
-    
+
     for data in data_list:
         for info in data[:-2]:
             if re.match(patterns[0], str(info)) and \
                 re.match(patterns[1], str(data[data.index(info) + 1]).replace(',', '')) and \
                 re.match(patterns[1], str(data[data.index(info) + 2]).replace(',', '')):
+                flag = True
                 bankname = info
+                if "合计" in bankname.replace(' ', '') or "总计" in bankname.replace(' ', ''):
+                    continue
                 credit = max(float(re.findall(patterns[1], str(data[data.index(info) + 1]).replace(',', ''))[0]), \
                     float(re.findall(patterns[1], str(data[data.index(info) + 2]).replace(',', ''))[0]))
                 used = min(float(re.findall(patterns[1], str(data[data.index(info) + 1]).replace(',', ''))[0]), \
@@ -96,6 +99,7 @@ def clean_table(df):
                 info = "银行名称:" + bankname + "  授信额度:%.2f" % credit + "  已用额度:%.2f" % used + "  剩余额度:%.2f" % (credit - used) + "\n"
                 log_file.write(info)
                 insert_credit_info(cur, bankname, credit, used)
+    return flag
 
 
 def get_units(table_page_number):
@@ -108,25 +112,26 @@ def get_units(table_page_number):
 
 
 def insert_company_info(cursor, company, units):
-    sql = "insert into company_info (company, units) values ('%s', '%s')" % (company, units)
+    sql = "insert into myapp_company_info (company, units) values ('%s', '%s')" % (company, units)
     cursor.execute(sql)
     conn.commit()
     
 
-
 def insert_credit_info(cursor, bank, credit, used):
-    sql1 = "select id from company_info where company = '%s'" % company
+    sql1 = "select id from myapp_company_info where company = '%s'" % company
     c = cursor.execute(sql1)
     company_id = c.fetchone()
-    sql = "insert into credit_info (bank, credit, uesd, company) values ('%s', '%.2f', '%.2f', '%d')" % (bank, credit, used, int(company_id[0]))
+    sql = "insert into myapp_credit_info (bank, credit, used, company_id) values ('%s', '%.2f', '%.2f', '%d')" % (bank, credit, used, int(company_id[0]))
     cursor.execute(sql)
     conn.commit()
 
 
 if __name__ == "__main__":
-    conn = sqlite3.connect('pdftables.sqlite')
-    cur = conn.cursor()
+    threadLock = threading.Lock()
+    threads = []
 
+    conn = sqlite3.connect(r'C:\Users\86151\Desktop\pdfbug\deala\pdftables.sqlite')
+    cur = conn.cursor()
 
     file_path = r"C:/Users/86151/Desktop/pdfbug/deala/PDFdownload/"
     filelist = os.listdir(file_path)
@@ -155,9 +160,8 @@ if __name__ == "__main__":
                 else:
                     log_file.write("计量单位获取失败\n")
                 log_file.write("目标表格提取\n")
-                df = get_table(each_file, table_page_number)
                 log_file.write("清洗数据\n")
-                clean_table(df)
+                clean_table(each_file, table_page_number)
             else:
                 log_file.write("未找到表格所在页数\n")
         else:
